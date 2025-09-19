@@ -13,4 +13,7 @@ function getComputerChoice(){
     }
 }
 
-console.log(getComputerChoice());
+function getHumanChoice(){
+    return prompt();
+}
+getHumanChoice();
