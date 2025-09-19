@@ -3,56 +3,29 @@ let computerScore=0;
 
 function getComputerChoice(){
     let choice = Math.floor(Math.random()*3)+1;
-    return choice;
-}
-
-function getHumanChoice(){
-    let choice = prompt().toLowerCase();
     switch (choice){
-        case "rock":
-            return 1;
-        case "paper":
-            return 2;
-        case "scissors":
-            return 3;
+        case 1:
+            return "rock";
+        case 2:
+            return "paper";
+        case 3:
+            return "scissors";
     }
 }
 
+function getHumanChoice(){
+    return (prompt().toLowerCase());
+}
+
 function playRound(humanChoice, computerChoice){
-    switch(humanChoice){
-        case 1:
-            if (computerChoice==1){
-                console.log("Draw");
-            }else if (computerChoice==2){
-                console.log("you lose. Paper beats rock!");
-                computerScore++;
-            }else {
-                console.log("you win. Rock beats scissors!");
-                humanScore++;
-            }
-            break;
-        case 2:
-            if (computerChoice==1){
-                console.log("You win. Paper beats rock!");
-                humanScore++;
-            }else if (computerChoice==2){
-                console.log("Draw");
-            }else {
-                console.log("you lose. Scissors beats paper!");
-                computerScore++;
-            }
-            break;
-        case 3:
-            if (computerChoice==1){
-                console.log("you lose. Rock beats scissors!");
-                computerScore++;
-            }else if (computerChoice==2){
-                console.log("you win. Scissors beats paper!");
-                humanScore++;
-            }else {
-                console.log("Draw");
-            }
-            break;
+    if (humanChoice === computerChoice){
+        console.log("Draw!");
+    }else if ((humanChoice=="rock" && computerChoice=="scissors") || (humanChoice=="paper" && computerChoice=="rock") || (humanChoice=="scissors" && computerChoice=="paper")){
+        console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
+        humanScore++;
+    }else{
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
+        computerScore++;
     }
 }
 
